@@ -14,7 +14,6 @@ class xmlController extends Controller
         $url = $xml->parse([
             'urls' => ['uses' => 'url[loc,lastmod]'],
         ]);
-
-        print_r( $url);
+        return view('xml-table',compact('url'));
     }
 }

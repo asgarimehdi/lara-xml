@@ -1,7 +1,16 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: it1
- * Date: 3/3/2019
- * Time: 8:22 AM
- */
+<table>
+    <thead>
+    <tr>
+        <th> modif date</th>
+        <th> adddress </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($url['urls'] as $urls)
+        <tr>
+            <td> {{$urls['lastmod']}} </td>
+            <td> {{$urls['loc']}} </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
