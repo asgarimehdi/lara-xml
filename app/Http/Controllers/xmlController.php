@@ -45,6 +45,7 @@ class xmlController extends Controller
                 $link->save();
                 }
                 catch (\Illuminate\Database\QueryException $e){
+                    echo $e->getMessage()."<hr>";
                     //
                 }
             }
@@ -53,7 +54,7 @@ class xmlController extends Controller
 
 
     public function xmlToArr(){
-        $xml = XmlParser::load('http://127.0.0.1/test.xml');
+        $xml = XmlParser::load('https://behroo165.com/product-sitemap2.xml');
 
         $url = $xml->parse([
             'urls' => ['uses' => 'url[loc,lastmod]'],
