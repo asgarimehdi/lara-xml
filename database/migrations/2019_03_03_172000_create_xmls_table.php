@@ -17,7 +17,7 @@ class CreateXmlsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('page_id')->unique();
             $table->text('url');
-            $table->string('modification')->unique();
+            $table->string('modification');
             $table->dateTime('last_job');
             $table->timestamps();
         });
