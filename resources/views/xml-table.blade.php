@@ -3,13 +3,15 @@
     <tr>
         <th> modif date</th>
         <th> adddress </th>
+        <th> page_id </th>
     </tr>
     </thead>
     <tbody>
-    @foreach($url['urls'] as $urls)
+    @foreach($final_urls as $final_url)
         <tr>
-            <td> {{$urls['lastmod']}} </td>
-            <td> {{$urls['loc']}} </td>
+            <td> {{$final_url['modification']}} </td>
+            <td> {{$final_url['url']}} </td>
+            <td> {{$final_url['page_id']}} </td>
         </tr>
     @endforeach
     </tbody>
