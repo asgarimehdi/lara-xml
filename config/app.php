@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Orchestra\Parser\XmlServiceProvider::class,
+        Ixudra\Curl\CurlServiceProvider::class,
 
     ],
 
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'XmlParser' => Orchestra\Parser\Xml\Facade::class,
+        'Curl'          => Ixudra\Curl\Facades\Curl::class,
 
     ],
 

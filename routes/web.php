@@ -17,3 +17,4 @@ Route::get('/', function () {
 Route::get('xml','xmlController@index');
 Route::get('show','xmlController@show');
 Route::get('save','xmlController@save');
+Route::get('remote','xmlController@remote');

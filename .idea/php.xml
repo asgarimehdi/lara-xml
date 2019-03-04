@@ -80,6 +80,7 @@
       <path value="$PROJECT_DIR$/vendor/laravie/parser" />
       <path value="$PROJECT_DIR$/vendor/orchestra/parser" />
       <path value="$PROJECT_DIR$/vendor/tightenco/collect" />
+      <path value="$PROJECT_DIR$/vendor/ixudra/curl" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

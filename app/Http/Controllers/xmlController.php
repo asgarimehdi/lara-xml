@@ -7,6 +7,7 @@ use App\Xml;
 use Illuminate\Http\Request;
 use Orchestra\Parser\Xml\Facade as XmlParser;
 use Carbon\Carbon;
+use Ixudra\Curl\Facades\Curl;
 
 class xmlController extends Controller
 {
@@ -69,5 +70,17 @@ class xmlController extends Controller
             $i++;
         }
         return $final_urls;
+    }
+
+    public function remote(){
+        $url='https://behroo165.com/Product/B165-13129/%d8%b4%d8%a7%d9%85%d9%be%d9%88-%d8%a8%d8%af%d9%86-%da%a9%d9%88%d8%af%da%a9-%d8%ac%d8%a7%d9%86%d8%b3%d9%88%d9%86/';
+        $response = Curl::to($url)->
+        withOption('REFERER', 'http://www.baidu.com')->
+        withOption('SSL_VERIFYPEER', 'false')->
+        withOption('RETURNTRANSFER', '1')->
+        withOption('FOLLOWLOCATION', '0')->
+        withOption('USERAGENT', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.5) Gecko/20041107 Firefox/1.0')->
+        get();
+        return $response;
     }
 }
