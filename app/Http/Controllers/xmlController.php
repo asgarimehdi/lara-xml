@@ -73,14 +73,22 @@ class xmlController extends Controller
     }
 
     public function remote(){
-        $url='https://behroo165.com/Product/B165-13129/%d8%b4%d8%a7%d9%85%d9%be%d9%88-%d8%a8%d8%af%d9%86-%da%a9%d9%88%d8%af%da%a9-%d8%ac%d8%a7%d9%86%d8%b3%d9%88%d9%86/';
+        $url='https://behroo165.com/Product/B165-16012/%d8%a7%d8%b3%d9%be%d8%b1%db%8c-%d8%b6%d8%af%d8%a2%d9%81%d8%aa%d8%a7%d8%a8-%d8%a2%d9%82%d8%a7%db%8c%d8%a7%d9%86-%d8%a7%db%8c%d8%b2%d8%af%db%8c%d9%86/';
         $response = Curl::to($url)->
-        withOption('REFERER', 'http://www.baidu.com')->
+        withOption('REFERER', 'http://www.google.com')->
         withOption('SSL_VERIFYPEER', 'false')->
         withOption('RETURNTRANSFER', '1')->
         withOption('FOLLOWLOCATION', '0')->
-        withOption('USERAGENT', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.5) Gecko/20041107 Firefox/1.0')->
+        withOption('USERAGENT', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36')->
+        withResponseHeaders() ->returnResponseObject()->
         get();
-        return $response;
+        return  $test= $response->status;
+        return strlen($test);
+    }
+
+    public function userAgent(Request $request){
+        $ua = $request->server('HTTP_USER_AGENT');
+//        $ub = $request->header('User-Agent');
+        return $ua;
     }
 }
