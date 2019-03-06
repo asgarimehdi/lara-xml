@@ -16,7 +16,7 @@ class CreateXmlsTable extends Migration
         Schema::create('xmls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('url');
-            $table->string('url_decoded')->uniqid();
+            $table->string('url_decoded')->unique();
             $table->string('modification');
             $table->dateTime('last_job');
             $table->timestamps();
