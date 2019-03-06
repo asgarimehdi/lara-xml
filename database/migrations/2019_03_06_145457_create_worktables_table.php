@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateXmlsTable extends Migration
+class CreateWorktablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateXmlsTable extends Migration
      */
     public function up()
     {
-        Schema::create('xmls', function (Blueprint $table) {
+        Schema::create('worktables', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('url');
-            $table->string('url_decoded')->unique();
-            $table->string('modification');
+            $table->integer('useragents_id');
+            $table->integer('xmls_id');
+            $table->dateTime('last_job');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateXmlsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('xmls');
+        Schema::dropIfExists('worktables');
     }
 }

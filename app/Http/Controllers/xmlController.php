@@ -49,7 +49,7 @@ class xmlController extends Controller
                     $link->url=$final_url['url'];
                     $link->url_decoded=$final_url['url_decoded'];
                     $link->modification=$final_url['modification'];
-                    $link->last_job=$mytime->toDateTimeString();
+//                    $link->last_job=$mytime->toDateTimeString();
                     $link->save();
                 }
                 catch (\Illuminate\Database\QueryException $e){
