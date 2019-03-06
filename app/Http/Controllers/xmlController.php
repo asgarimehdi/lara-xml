@@ -13,10 +13,30 @@ class xmlController extends Controller
 {
     //
     public function index(){
+
         //
+        if($this->isUrlValid($_ENV['XML_TARGET'])){
+
+            $childXmls=$this->fetchChildXmlFromSitemap($_ENV['XML_TARGET']);
+            foreach ($childXmls as $childXml){
+                $isValid=$this->isUrlValid($childXml['url']);
+                if($isValid){
+                    echo $isValid;
+                    echo "<br>";
+                }
+
+            }
+            //var_dump($childXmls);
+
+        }
+        else
+            return "url is invalid";
+
+
     }
 
     public function show(){
+
        $final_urls= $this->xmlToArr();
         return view('xml-table',compact('final_urls'));
 
@@ -46,8 +66,8 @@ class xmlController extends Controller
     }
 
 
-    public function xmlToArr(){
-        $xml = XmlParser::load('https://behroo165.com/product-sitemap2.xml');
+    public function xmlToArr($input_url){
+        $xml = XmlParser::load($input_url);
 
         $url = $xml->parse([
             'urls' => ['uses' => 'url[loc,lastmod]'],
@@ -81,5 +101,31 @@ class xmlController extends Controller
         $ua = $request->server('HTTP_USER_AGENT');
 //        $ub = $request->header('User-Agent');
         return $ua;
+    }
+    public function fetchChildXmlFromSitemap($input_url){
+        $xml = XmlParser::load($input_url);
+        $url = $xml->parse([
+            'urls' => ['uses' => 'sitemap[loc,lastmod]'],
+        ]);
+        $i=0;
+        foreach ($url['urls'] as $urls){
+            $final_urls[$i]['url']= $urls['loc'];
+            $final_urls[$i]['modification']= $urls['lastmod'];
+            $i++;
+        }
+        return $final_urls;
+    }
+
+    private function isUrlValid($input_url){
+        $response = Curl::to($input_url)->
+        withOption('REFERER', 'http://www.google.com')->
+        withOption('SSL_VERIFYPEER', 'false')->
+        withOption('RETURNTRANSFER', '1')->
+        withOption('FOLLOWLOCATION', '0')->
+        withOption('USERAGENT', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36')->
+        withResponseHeaders() ->returnResponseObject()->
+        get();
+        echo $response->headers;
+
     }
 }

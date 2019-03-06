@@ -509,16 +509,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.2",
+            "version": "v5.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c3b7cbe700efb0f4c9a5359feaedb0a1f0a741ca"
+                "reference": "d36d74acd3added5abbe7e7a84342b54bb0b0521"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c3b7cbe700efb0f4c9a5359feaedb0a1f0a741ca",
-                "reference": "c3b7cbe700efb0f4c9a5359feaedb0a1f0a741ca",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d36d74acd3added5abbe7e7a84342b54bb0b0521",
+                "reference": "d36d74acd3added5abbe7e7a84342b54bb0b0521",
                 "shasum": ""
             },
             "require": {
@@ -652,7 +652,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-02-27T14:02:36+00:00"
+            "time": "2019-03-05T13:51:19+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2573,16 +2573,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.8.2",
+            "version": "v5.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "9e431d3ba84ff02183bbb6da07410d59ef769f9b"
+                "reference": "7a9a1aa3f1478d6baba2d3a95e18d2ad8caaf5c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/9e431d3ba84ff02183bbb6da07410d59ef769f9b",
-                "reference": "9e431d3ba84ff02183bbb6da07410d59ef769f9b",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/7a9a1aa3f1478d6baba2d3a95e18d2ad8caaf5c4",
+                "reference": "7a9a1aa3f1478d6baba2d3a95e18d2ad8caaf5c4",
                 "shasum": ""
             },
             "require": {
@@ -2619,7 +2619,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2019-02-26T18:45:33+00:00"
+            "time": "2019-03-05T14:34:11+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
