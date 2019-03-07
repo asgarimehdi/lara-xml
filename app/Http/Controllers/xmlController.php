@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Xml;
+use App\Useragent;
+use App\Worktable;
 use Illuminate\Http\Request;
 use Orchestra\Parser\Xml\Facade as XmlParser;
 use Carbon\Carbon;
@@ -42,14 +44,14 @@ class xmlController extends Controller
     public function save($input_url){
         $final_urls= $this->xmlToArr($input_url);
         foreach($final_urls as $final_url){
-            $mytime =  Carbon::now();
+
             $link= new Xml;
             if($final_url['url_decoded']){
                 try{
                     $link->url=$final_url['url'];
                     $link->url_decoded=$final_url['url_decoded'];
                     $link->modification=$final_url['modification'];
-//                    $link->last_job=$mytime->toDateTimeString();
+
                     $link->save();
                 }
                 catch (\Illuminate\Database\QueryException $e){
@@ -131,5 +133,40 @@ class xmlController extends Controller
         $url='https://behroo165.com/pa_نوع-شوینده-sitemap.xml';
 //        $url='https://behroo165.com/pa_%D8%AD%D8%AC%D9%85_%D9%88%D8%B2%D9%86-sitemap.xml';
         return $this->isXml($url);
+    }
+
+//    public function handelUserAgent(Request $request){
+//        $agent = new Useragent();
+//        $count=$agent->where('useragent','=',$request->server('HTTP_USER_AGENT'))->count();
+//        if($count==0) {
+//            $agent->useragent = $request->server('HTTP_USER_AGENT');
+//            $agent->save();
+//        }
+//        echo $agent->all();
+//    }
+
+    public function properWorkTables(){
+        $agent = new Useragent;
+        $link= new Xml;
+//        $work= new Worktable;
+        $all_agent=$agent->get('id');
+        $all_link=$link->get('id');
+        $mytime =  Carbon::now();
+
+        foreach ($all_agent as $agentss)
+        {
+            foreach ($all_link as $linkss)
+            {
+                $work= new Worktable;
+                $work->useragents_id=$agentss['id'];
+                $work->xmls_id=$linkss['id'];
+                $work->last_job=$mytime->toDateTimeString();
+                $work->save();
+
+            }
+        }
+
+
+//        echo $all_link;
     }
 }

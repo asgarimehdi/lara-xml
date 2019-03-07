@@ -19,5 +19,4 @@ Route::get('show','xmlController@show');
 Route::get('save','xmlController@save');
 Route::get('remote','xmlController@remote');
 Route::get('agent','xmlController@userAgent');
-Route::get('childxml','xmlController@fetchChildXmlFromSitemap');
-Route::get('validate','xmlController@isUrlValid');
+Route::get('proper','xmlController@properWorkTables');

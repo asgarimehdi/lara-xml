@@ -18,6 +18,7 @@ class CreateWorktablesTable extends Migration
             $table->integer('useragents_id');
             $table->integer('xmls_id');
             $table->dateTime('last_job');
+            $table->unique(['useragents_id','xmls_id']);
             $table->timestamps();
         });
     }
