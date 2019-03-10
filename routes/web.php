@@ -20,3 +20,4 @@ Route::get('save','xmlController@save');
 Route::get('remote','xmlController@remote');
 Route::get('agent','xmlController@userAgent');
 Route::get('proper','xmlController@properWorkTables');
+Route::resource('useragent','userAgent');
