@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('xml','xmlController@index');
-Route::get('show','xmlController@show');
-Route::get('save','xmlController@save');
-Route::get('remote','xmlController@remote');
-Route::get('agent','xmlController@userAgent');
-Route::get('proper','xmlController@properWorkTables');
-Route::resource('useragent','userAgent');
+//Route::get('show','xmlController@show');
+Route::get('agent','xmlController@agent');
+//Route::resource('useragent','agentController');
+Route::get('fetch','xmlController@fetchPage');
