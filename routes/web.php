@@ -18,4 +18,4 @@ Route::get('xml','xmlController@index');
 //Route::get('show','xmlController@show');
 Route::get('agent','xmlController@agent');
 //Route::resource('useragent','agentController');
-Route::get('fetch','xmlController@fetchPage');
+Route::get('fetch/{num}','xmlController@fetchPage');

@@ -176,19 +176,20 @@ class xmlController extends Controller
 //        return strlen($test);
     }
 
-    public function fetchPage(){
-        $work = new Worktable;
-        $agent = new Useragent;
-        $link = new Xml;
-        $mytime = Carbon::now();
-        $workTable=$work->orderBy('last_job','ASC')->take(1)->get();
-        $agentTable=$agent->where('id',$workTable[0]->useragents_id)->get();;
-        $xmlTable=$link->where('id',$workTable[0]->xmls_id)->get();
-        $status= $this->remote($xmlTable[0]->url,$agentTable[0]->useragent);
-        if ($status=='200')
-        {
-          $work->where('id',$workTable[0]->id)->update(['last_job'=>$mytime->toDateTimeString()]);
-        }
+    public function fetchPage($num){
 
+        for($i=0;$i<$num;$i++) {
+            $work = new Worktable;
+            $agent = new Useragent;
+            $link = new Xml;
+            $mytime = Carbon::now();
+            $workTable = $work->orderBy('last_job', 'ASC')->take(1)->get();
+            $agentTable = $agent->where('id', $workTable[0]->useragents_id)->get();;
+            $xmlTable = $link->where('id', $workTable[0]->xmls_id)->get();
+            $status = $this->remote($xmlTable[0]->url, $agentTable[0]->useragent);
+            if ($status == '200') {
+                $work->where('id', $workTable[0]->id)->update(['last_job' => $mytime->toDateTimeString()]);
+            }
+        }
     }
 }
