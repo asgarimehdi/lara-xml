@@ -140,7 +140,7 @@ class xmlController extends Controller
         $agent = new Useragent;
         $link = new Xml;
 
-        $all_agent = $agent->get('id');
+        $all_agent = $agent->orderBy('updated_at', 'ASC')->get('id');
         $all_link = $link->get('id');
         $mytime = Carbon::now();
 
@@ -158,6 +158,10 @@ class xmlController extends Controller
                     //
                 }
             }
+            $agent2 = new Useragent;
+            $agent_to_update=$agent2->findOrFail($agentss['id']);
+            $agent_to_update->created_at=$mytime->toDateTimeString();
+            $agent_to_update->save();
         }
 
     }

@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('xml','xmlController@index');
+Route::get('proper','xmlController@properWorkTables');
 //Route::get('show','xmlController@show');
 Route::get('agent','xmlController@agent');
 //Route::resource('useragent','agentController');
